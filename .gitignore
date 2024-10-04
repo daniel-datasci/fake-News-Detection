@@ -1,0 +1,15 @@
+# Environment variables
+.env
+.venv
+
+# Trained model
+*.pt
+
+# SQLite database file
+db.sqlite3
+
+# Pycache files
+__pycache__/
+
+# Text files
+*.txt

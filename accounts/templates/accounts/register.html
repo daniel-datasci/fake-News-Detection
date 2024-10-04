@@ -1,0 +1,19 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <p class = "hline">Create an account and get started</p>
+            <h3 id="form-error">
+                {{ error }}
+            </h3>
+            {{ form | crispy }}
+            <button type="submit" class="btn-primary">Register</button>
+        </form>
+        <p class="bottom-link">Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
+    </div>
+
+{% endblock %}

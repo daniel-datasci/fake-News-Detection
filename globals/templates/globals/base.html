@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'globals/css/style.css' %}">
+</head>
+<body>
+    <div>
+        <nav>
+            <!-- <ul id="info">
+                <li>
+                    <img src="" alt="FakeNewsDetection">
+                </li>
+                <li>
+                    <p>A Chaos Free Life</p>
+                </li>
+
+            </ul> -->
+            <ul id="meta-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'overview' %}">Overview</a></li>
+                <li><a href="{% url 'documentation' %}">Documentation</a></li>
+                <li><a href="{% url 'news_feed' %}">News</a></li>
+                <li><a href="https://discord.gg/NMmXhP9y" target="_blank">Community</a></li>
+                <li><a href="https://github.com/SakibSibly/FakeNewsDetection" target="_blank">Code</a></li>
+                <li><a href="https://github.com/SakibSibly/FakeNewsDetection/issues" target="_blank">Issues</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+            </ul>
+            <ul id="account-aciton">
+                {% if request.user.is_authenticated %}
+                    <li><a href="">{{ request.user.username }}</a></li>
+                    <li>
+                        {% if request.user.is_authenticated %}
+                            <form id="system-logout" method="POST" action="{% url 'logout' %}?next={{ request.path }}">
+                                {% csrf_token %}
+                                <button class="underline" type="submit">
+                                    Logout
+                                </button>
+                            </form>
+                        {% else %}
+                            <a class="underline" href="{% url 'register' %}?next={{ request.path }}">Register</a>
+                        {% endif %}
+                    </li>
+                    <li><a href="{% url 'history' request.user.username %}">History</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+    {% block content %} {% endblock %}
+    <footer>
+        <div class="flexbar">
+            <div class="logo">
+                <img src="{% static 'globals/image/fake_icon.png' %}" alt="FakeNewsDetection">
+                <p class="quote">Truth matters.</p>
+            </div>
+            <div class="links">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                </ul>
+            </div>
+            <div class="links">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                </ul>
+            </div>
+            <div class="links">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2024 FakeNewsDetection. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
